@@ -7,10 +7,9 @@ class Product extends Model {
                 name: Sequelize.STRING,
                 barcode: Sequelize.STRING,
                 description: Sequelize.STRING,
-                value: Sequelize.INTEGER,
+                value: Sequelize.FLOAT,
                 amount: Sequelize.INTEGER,
                 expiration_date: Sequelize.DATE,
-                count_date: Sequelize.DATE,
             },
             {
                 sequelize,

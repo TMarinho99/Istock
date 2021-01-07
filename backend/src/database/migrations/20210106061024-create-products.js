@@ -20,7 +20,7 @@ module.exports = {
                 allowNull: true,
             },
             value: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.FLOAT,
                 allowNull: false,
             },
             amount: {
@@ -28,10 +28,6 @@ module.exports = {
                 allowNull: false,
             },
             expiration_date: {
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            count_date: {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
