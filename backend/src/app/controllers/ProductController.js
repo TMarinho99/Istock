@@ -2,6 +2,7 @@ import Product from '../models/Product';
 
 export default {
     async index(req, res) {
+        const { page = 1 } = req.query;
         const products = await Product.findAll({
             attributes: [
                 'id',
@@ -11,6 +12,9 @@ export default {
                 'amount',
                 'expiration_date',
             ],
+            oreder: ['name'],
+            limit: 20,
+            offset: (page - 1) * 20,
         });
 
         return res.json(products);
