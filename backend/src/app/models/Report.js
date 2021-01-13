@@ -5,6 +5,8 @@ class Report extends Model {
         super.init(
             {
                 date: Sequelize.DATE,
+                amount: Sequelize.INTEGER,
+                expiration_date: Sequelize.DATE,
             },
             {
                 sequelize,

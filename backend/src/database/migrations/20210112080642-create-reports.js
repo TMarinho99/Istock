@@ -18,6 +18,13 @@ module.exports = {
                 onDelete: 'CASCADE',
                 allowNull: false,
             },
+            amount: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
+            expiration_date: {
+                type: Sequelize.DATE,
+            },
             created_at: {
                 type: Sequelize.DATE,
                 allowNull: false,

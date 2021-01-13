@@ -13,7 +13,6 @@ module.exports = {
             },
             barcode: {
                 type: Sequelize.STRING,
-                allowNull: true,
             },
             description: {
                 type: Sequelize.STRING,
@@ -21,14 +20,6 @@ module.exports = {
             },
             value: {
                 type: Sequelize.FLOAT,
-                allowNull: false,
-            },
-            amount: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-            },
-            expiration_date: {
-                type: Sequelize.DATE,
                 allowNull: false,
             },
             created_at: {

@@ -22,5 +22,6 @@ routes.put('/products/:id', ProductController.update);
 routes.delete('/products/:id', ProductController.delete);
 
 routes.post('/reports', ReportController.store);
+routes.get('/reports', ReportController.index);
 
 export default routes;

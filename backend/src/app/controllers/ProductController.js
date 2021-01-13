@@ -4,14 +4,7 @@ export default {
     async index(req, res) {
         const { page = 1 } = req.query;
         const products = await Product.findAll({
-            attributes: [
-                'id',
-                'name',
-                'description',
-                'value',
-                'amount',
-                'expiration_date',
-            ],
+            attributes: ['id', 'name', 'description', 'value'],
             oreder: ['name'],
             limit: 20,
             offset: (page - 1) * 20,
@@ -20,7 +13,7 @@ export default {
         return res.json(products);
     },
     async store(req, res) {
-        const { name, barcode } = req.body;
+        const { name } = req.body;
 
         const existProduct = await Product.findOne({ where: { name } });
 
@@ -30,29 +23,24 @@ export default {
                 .json({ error: 'Product name already registered ' });
         }
 
-        const existProduct1 = await Product.findOne({ where: { barcode } });
+        const existProduct1 = await Product.findOne({ where: { name } });
 
         if (existProduct1) {
             return res
                 .status(400)
-                .json({ error: 'Product barcode already registered ' });
+                .json({ error: 'Product already registered ' });
         }
 
-        const {
-            id,
-            description,
-            valur,
-            amount,
-            expiration_date,
-        } = await Product.create(req.body);
+        const { id, barcode, description, value } = await Product.create(
+            req.body
+        );
 
         return res.json({
             id,
             name,
+            barcode,
             description,
-            valur,
-            amount,
-            expiration_date,
+            value,
         });
     },
     async update(req, res) {
