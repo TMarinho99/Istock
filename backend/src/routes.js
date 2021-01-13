@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import movementProduct from './app/controllers/movementProduct';
 import ProductController from './app/controllers/ProductController';
+import ReportController from './app/controllers/ReportController';
 import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
 
@@ -21,6 +21,6 @@ routes.get('/products', ProductController.index);
 routes.put('/products/:id', ProductController.update);
 routes.delete('/products/:id', ProductController.delete);
 
-routes.post('/products/:id/movements', movementProduct.amount);
+routes.post('/reports', ReportController.store);
 
 export default routes;
