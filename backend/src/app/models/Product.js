@@ -13,6 +13,11 @@ class Product extends Model {
                 sequelize,
             }
         );
+        return this;
+    }
+
+    static associate(models) {
+        this.belongsTo(models.File, { foreignKey: 'image_id', as: 'image' });
     }
 }
 

@@ -1,11 +1,17 @@
 import Product from '../models/Product';
+import File from '../models/File';
 
 export default {
     async index(req, res) {
         const { page = 1 } = req.query;
         const products = await Product.findAll({
             attributes: ['id', 'name', 'description', 'value'],
-            oreder: ['name'],
+            include: {
+                model: File,
+                as: 'image',
+                attributes: ['name', 'path', 'url'],
+            },
+            order: ['name'],
             limit: 20,
             offset: (page - 1) * 20,
         });

@@ -1,32 +1,20 @@
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable('reports', {
+        await queryInterface.createTable('files', {
             id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
             },
-            product_id: {
-                type: Sequelize.INTEGER,
-                references: { model: 'products', key: 'id' },
-                onUpdate: 'CASCADE',
-                onDelete: 'CASCADE',
+            name: {
+                type: Sequelize.STRING,
                 allowNull: false,
             },
-            date: {
-                type: Sequelize.DATE,
+            path: {
+                type: Sequelize.STRING,
                 allowNull: false,
-            },
-            amount: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-            },
-            input: {
-                type: Sequelize.INTEGER,
-            },
-            output: {
-                type: Sequelize.INTEGER,
+                unique: true,
             },
             created_at: {
                 type: Sequelize.DATE,
@@ -40,6 +28,6 @@ module.exports = {
     },
 
     down: async (queryInterface) => {
-        await queryInterface.dropTable('reports');
+        await queryInterface.dropTable('files');
     },
 };
