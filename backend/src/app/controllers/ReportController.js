@@ -14,7 +14,7 @@ export default {
 
         const reports = await Report.findAll({
             where: { product_id },
-            attributes: ['date', 'amount', 'input', 'output'],
+            attributes: ['date', 'amount'],
             include: {
                 model: Product,
                 as: 'products',
@@ -40,14 +40,12 @@ export default {
             return res.status(400).json({ error: 'Product does not exist' });
         }
 
-        const { date, product_id, amount, input, output } = req.body;
+        const { date, product_id, amount } = req.body;
 
         const report = await Report.create({
             product_id,
             date: parseISO(date),
             amount,
-            input,
-            output,
         });
 
         return res.json(report);

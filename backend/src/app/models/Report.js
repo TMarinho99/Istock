@@ -6,8 +6,6 @@ class Report extends Model {
             {
                 date: Sequelize.DATE,
                 amount: Sequelize.INTEGER,
-                input: Sequelize.INTEGER,
-                output: Sequelize.INTEGER,
             },
             {
                 sequelize,
